@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import Express from "express";
 import HomeRoutes from './src/routes/HomeRoutes';
 
@@ -9,8 +11,8 @@ class App {
     }
 
     middlewares() {
-        this.app.use(Express.urlencoded({extended: true}));
-        this.app .use(Express.json());
+        this.app.use(Express.urlencoded({ extended: true }));
+        this.app.use(Express.json());
 
     }
     routes() {

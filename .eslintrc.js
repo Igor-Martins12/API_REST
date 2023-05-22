@@ -33,5 +33,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
      'no-console': 'off',
       "class-methods-use-this": "off",
+      "import/first": "off",
   },
 };
