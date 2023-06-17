@@ -34,6 +34,7 @@ module.exports = {
      'no-console': 'off',
       "class-methods-use-this": "off",
       "import/first": "off",
-      "no-param-reassign": "off"
+      "no-param-reassign": "off",
+      "camelcase": "off",
   },
 };
