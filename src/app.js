@@ -40,7 +40,7 @@ class App {
         this.app.use(helmet())
         this.app.use(Express.urlencoded({ extended: true }));
         this.app.use(Express.json());
-        this.app.use(Express.static(resolve(__dirname, 'uploads')));
+        this.app.use('/images/', Express.static(resolve(__dirname,'..','uploads','images')));
 
     }
     routes() {

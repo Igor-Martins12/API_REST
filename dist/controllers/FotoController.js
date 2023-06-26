@@ -2,7 +2,7 @@
 var _multerConfig = require('../config/multerConfig'); var _multerConfig2 = _interopRequireDefault(_multerConfig);
 
 var _Foto = require('../models/Foto'); var _Foto2 = _interopRequireDefault(_Foto);
-var _sequelize = require('sequelize');
+
 
 const upload = _multer2.default.call(void 0, _multerConfig2.default).single('foto');
 
@@ -16,8 +16,13 @@ class FotoController {
       }
       try {
         const { originalname, filename } = req.file;
-        const { aluno_id } = req.body;
-        const foto = await _Foto2.default.create({ originalname, filename, aluno_id })
+        const { id } = req.params;
+        if (!id) {
+          return res.status(400).json({
+            errors: ['Aluno n existe'],
+          });
+        }
+        const foto = await _Foto2.default.create.id({ originalname, filename, id })
 
         return res.json(foto);
 
