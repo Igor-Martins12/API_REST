@@ -15,6 +15,7 @@ import alunoRoutes from './routes/alunoRoutes';
 import FotoRoutes from './routes/FotoRoutes';
 
 const whiteList = [
+    'http://35.199.106.206:84/alunos',
     'http://localhost:3006',
   ];
    
@@ -37,7 +38,9 @@ class App {
 
     middlewares() {
         this.app.use(cors(corsOptions))
-        this.app.use(helmet())
+        this.app.use(helmet({
+          crossOriginEmbedderPolicy: false,
+        }))
         this.app.use(Express.urlencoded({ extended: true }));
         this.app.use(Express.json());
         this.app.use('/images/', Express.static(resolve(__dirname,'..','uploads','images')));
