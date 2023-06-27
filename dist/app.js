@@ -15,6 +15,7 @@ var _alunoRoutes = require('./routes/alunoRoutes'); var _alunoRoutes2 = _interop
 var _FotoRoutes = require('./routes/FotoRoutes'); var _FotoRoutes2 = _interopRequireDefault(_FotoRoutes);
 
 const whiteList = [
+    'http://35.199.106.206:84/alunos',
     'http://localhost:3006',
   ];
    
@@ -37,6 +38,9 @@ class App {
 
     middlewares() {
         this.app.use(_cors2.default.call(void 0, corsOptions))
+        this.app.use(_helmet2.default.call(void 0, {
+          crossOriginEmbedderPolicy: false,
+        }))
         this.app.use(_express2.default.urlencoded({ extended: true }));
         this.app.use(_express2.default.json());
         this.app.use('/images/', _express2.default.static(_path.resolve.call(void 0, __dirname,'..','uploads','images')));
