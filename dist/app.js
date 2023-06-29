@@ -6,7 +6,7 @@ require('./database');
 
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+//import helmet from 'helmet'
 
 var _HomeRoutes = require('./routes/HomeRoutes'); var _HomeRoutes2 = _interopRequireDefault(_HomeRoutes);
 var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
@@ -39,9 +39,9 @@ class App {
 
     middlewares() {
         this.app.use(_cors2.default.call(void 0, corsOptions))
-        this.app.use(_helmet2.default.call(void 0, {
-          crossOriginEmbedderPolicy: false,
-        }))
+        //this.app.use(helmet({
+        // crossOriginEmbedderPolicy: false,
+      // }))
         this.app.use(_express2.default.urlencoded({ extended: true }));
         this.app.use(_express2.default.json());
         this.app.use('/images/', _express2.default.static(_path.resolve.call(void 0, __dirname,'..','uploads','images')));
