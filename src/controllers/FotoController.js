@@ -16,7 +16,7 @@ class FotoController {
         });
       }
       try {
-        const { originalname, filename } = req.file;
+        const { originalname, filename, url } = req.file;
         const { aluno_id } = req.body    
         const aluno = await Aluno.findByPk(aluno_id);
         if (!aluno) {
