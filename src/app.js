@@ -6,7 +6,7 @@ import './database';
 
 import Express from "express";
 import cors from 'cors'
-
+//import helmet from 'helmet'
 
 import HomeRoutes from './routes/HomeRoutes';
 import userRoutes from './routes/userRoutes';
@@ -15,7 +15,7 @@ import alunoRoutes from './routes/alunoRoutes';
 import FotoRoutes from './routes/FotoRoutes';
 
 const whiteList = [
-    'http://35.199.106.206:84/',
+    'http://35.199.106.206:84',
     'http://localhost:3000',
     'http://localhost:3006',
   ];
@@ -39,6 +39,7 @@ class App {
 
     middlewares() {
         this.app.use(cors(corsOptions))
+        //this.app.use(helmet({}))
         this.app.use(Express.urlencoded({ extended: true }));
         this.app.use(Express.json());
         this.app.use('/images/', Express.static(resolve(__dirname,'..','uploads','images')));
