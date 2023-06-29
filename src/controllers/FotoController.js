@@ -24,7 +24,7 @@ class FotoController {
             errors: ['Aluno não encontrado'],
           });
         }
-        const foto = await Foto.create({ originalname, filename, aluno_id })
+        const foto = await Foto.create({ originalname, filename, aluno_id, url})
 
         return res.json(foto);
 

@@ -41,7 +41,7 @@ class AlunoController {
         order: [['id', 'DESC'], [_Foto2.default, 'id', 'DESC']],
         include: {
           model: _Foto2.default,
-          attributes: ['url', 'filename'],
+          attributes: ['url' , 'filename'],
         },
       });
 
