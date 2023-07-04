@@ -41,7 +41,12 @@ class UserController {
   // update
   async update(req, res) {
     try {
-       const user = await User.findByPk(req.userId);
+      if (!req.params.id) {
+        return res.status(400).json({
+          errors: ['Id nao existe.'],
+        });
+      }
+      const user = await User.findByPk(req.params.id);
 
       if (!user) {
         return res.status(400).json({
@@ -62,8 +67,13 @@ class UserController {
   }
   async delete(req, res) {
     try {
-        const user = await User.findByPk(req.userId);
-
+      if (!req.params.id) {
+        return res.status(400).json({
+          errors: ['Id nao existe.'],
+        });
+      }
+      const user = await User.findByPk(req.params.id);
+      
       if (!user) {
         return res.status(400).json({
           errors: ['Usuário nao existe'],
@@ -71,7 +81,7 @@ class UserController {
       }
 
       await user.destroy();
-      return res.json(null);
+      return res.json(user);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message)
@@ -79,8 +89,6 @@ class UserController {
     }
 
   }
-
-
 }
 
 export default new UserController();
